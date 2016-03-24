@@ -22,7 +22,7 @@ module.exports = (robot) ->
          if user != sending_user
             count = (robot.brain.get(user) or 0) + 1
             robot.brain.set user, count
-            res += "@#{user}++ [woot! you now have #{count} beers!]\n"
+            res += "[woot! @#{user} now has #{count} beers!]\n"
          else if process.env.KARMABOT_NO_GIF
             res += process.env.KARMABOT_NO_GIF
      while (match = minusminus_re.exec(msg.message))
