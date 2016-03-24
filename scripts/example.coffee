@@ -23,7 +23,7 @@ module.exports = (robot) ->
             count = (robot.brain.get(user) or 0) + 1
             robot.brain.set user, count
             point_label = if count == 1 then "beer" else "beers"
-            res += "[woot! @#{user} now has #{count} point_label!]\n"
+            res += "[woot! @#{user} now has #{count} #{point_label}!]\n"
          else if process.env.KARMABOT_NO_GIF
             res += process.env.KARMABOT_NO_GIF
      while (match = minusminus_re.exec(msg.message))
@@ -39,7 +39,7 @@ module.exports = (robot) ->
      count = robot.brain.get(user)
      if count != null
          point_label = if count == 1 then "beer" else "beers"
-         msg.send "@#{user}: #{count} " + point_label
+         msg.send "@#{user}: #{count} #{point_label}"
      else
          msg.send "@#{user} has no karma"
 
@@ -69,7 +69,7 @@ module.exports = (robot) ->
         point_label = if points == 1 then "beer" else "beers"
         leader = if i == 0 then "All hail supreme leader!" else ""
         newline = if i < Math.min(limit, tuples.length) - 1 then '\n' else ''
-        str += "##{i+1} @#{username} [#{points} " + point_label + "] " + leader + newline
+        str += "##{i+1} @#{username} [#{points} #{point_label}"] " + leader + newline
      msg.send(str)
 
   #
