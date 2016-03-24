@@ -31,7 +31,7 @@ module.exports = (robot) ->
          count = (robot.brain.get(user) or 0) - 1
          robot.brain.set user, count
          point_label = if count == 1 then "beer" else "beers"
-         res += "[ouch! @#{user} is now at #{count} point_label]\n"
+         res += "[ouch! @#{user} is now at #{count} #{point_label}]\n"
      msg.send res.replace(/\s+$/g, '')
 
   robot.hear /// #{botname} \s+ @([a-z0-9_\-\.]+) ///i, (msg) ->
@@ -69,7 +69,7 @@ module.exports = (robot) ->
         point_label = if points == 1 then "beer" else "beers"
         leader = if i == 0 then "All hail supreme leader!" else ""
         newline = if i < Math.min(limit, tuples.length) - 1 then '\n' else ''
-        str += "##{i+1} @#{username} [#{points} #{point_label}"] " + leader + newline
+        str += "##{i+1} @#{username} [#{points} #{point_label}] " + leader + newline
      msg.send(str)
 
   #
