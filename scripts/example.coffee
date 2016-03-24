@@ -29,7 +29,7 @@ module.exports = (robot) ->
          user = match[1].replace(/\-+$/g, '')
          count = (robot.brain.get(user) or 0) - 1
          robot.brain.set user, count
-         res += "@#{user}-- [ouch! now at #{count}]\n"
+         res += "[ouch! @#{user} is now at #{count} beers]\n"
      msg.send res.replace(/\s+$/g, '')
 
   robot.hear /// #{botname} \s+ @([a-z0-9_\-\.]+) ///i, (msg) ->
